@@ -1,5 +1,4 @@
-<h1> Music </h1>
-
+<h1> Library </h1>
 
 <table>
     <tr>
@@ -7,15 +6,18 @@
     </tr>
     <% @songs.each do |song|%>
         <tr>
-        <td><%= song.title%></td>
-        <td><%= song.artist%></td>
-        <td><%= song.genre%></td>
-        <td><%= link_to 'Show', song %></td>
-        <td><%= link_to 'Edit', edit_song_path(song) %></td>
-        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure of deleting the selected?' } %></td>
-      </tr>
+        <td class="data-feild"><%= song.title%></td>
+        <td class="data-feild"><%= song.artist%></td>
+        <td class="data-feild"><%= song.genre%></td>
+        <td class="show-feild"><%= link_to 'Show', song %></td>
+        
+        <% if current_user.id == song.user_id %>
+        <td class="show-feild"><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td class="show-feild"><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure of deleting the selected?' } %></td>
+        <% end %>
+        </tr>
     <%end%>
     
 
 </table>
-<button type="button" class="btn btn-info"><%= link_to 'New Song', new_song_path %></button>
+<button type="button" class="button-feild"><%= link_to 'New Song', new_song_path %></button>
